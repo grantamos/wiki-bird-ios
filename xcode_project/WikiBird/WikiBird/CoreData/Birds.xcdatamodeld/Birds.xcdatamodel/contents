@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Bird" representedClassName="Bird" syncable="YES">
+        <attribute name="commonName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scientificName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wikiURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="birdGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BirdGroup" inverseName="birds" inverseEntity="BirdGroup" syncable="YES"/>
+        <relationship name="images" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BirdImage" inverseName="bird" inverseEntity="BirdImage" syncable="YES"/>
+        <relationship name="states" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="State" inverseName="birds" inverseEntity="State" syncable="YES"/>
+    </entity>
+    <entity name="BirdGroup" representedClassName="BirdGroup" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scientificFamily" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scientificOrder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="birds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bird" inverseName="birdGroup" inverseEntity="Bird" syncable="YES"/>
+    </entity>
+    <entity name="BirdImage" representedClassName="BirdImage" syncable="YES">
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="bird" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bird" inverseName="images" inverseEntity="Bird" syncable="YES"/>
+    </entity>
+    <entity name="State" representedClassName="State" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="birds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bird" inverseName="states" inverseEntity="Bird" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Bird" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="BirdGroup" positionX="-54" positionY="-9" width="128" height="118"/>
+        <element name="State" positionX="-36" positionY="9" width="128" height="73"/>
+        <element name="BirdImage" positionX="-27" positionY="63" width="128" height="73"/>
+    </elements>
+</model>

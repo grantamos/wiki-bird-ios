@@ -15,13 +15,24 @@
 		93519082195CD035007B94DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93519081195CD035007B94DB /* AppDelegate.m */; };
 		93519085195CD035007B94DB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93519083195CD035007B94DB /* Main_iPhone.storyboard */; };
 		93519088195CD035007B94DB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93519086195CD035007B94DB /* Main_iPad.storyboard */; };
-		9351908B195CD035007B94DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9351908A195CD035007B94DB /* ViewController.m */; };
 		9351908D195CD035007B94DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9351908C195CD035007B94DB /* Images.xcassets */; };
 		93519094195CD035007B94DB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519093195CD035007B94DB /* XCTest.framework */; };
 		93519095195CD035007B94DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519071195CD035007B94DB /* Foundation.framework */; };
 		93519096195CD035007B94DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519075195CD035007B94DB /* UIKit.framework */; };
 		9351909E195CD035007B94DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9351909C195CD035007B94DB /* InfoPlist.strings */; };
 		935190A0195CD035007B94DB /* WikiBirdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9351909F195CD035007B94DB /* WikiBirdTests.m */; };
+		935190E8195DC7D4007B94DB /* Birds.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 935190D4195DC7D4007B94DB /* Birds.xcdatamodeld */; };
+		935190E9195DC7D4007B94DB /* Bird+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190D8195DC7D4007B94DB /* Bird+Helper.m */; };
+		935190EA195DC7D4007B94DB /* BirdImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190DA195DC7D4007B94DB /* BirdImage+Helper.m */; };
+		935190EB195DC7D4007B94DB /* ManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190DC195DC7D4007B94DB /* ManagedObjectContext.m */; };
+		935190EC195DC7D4007B94DB /* NSManagedObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190DE195DC7D4007B94DB /* NSManagedObject+Helper.m */; };
+		935190ED195DC7D4007B94DB /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E1195DC7D4007B94DB /* Bird.m */; };
+		935190EE195DC7D4007B94DB /* BirdGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E3195DC7D4007B94DB /* BirdGroup.m */; };
+		935190EF195DC7D4007B94DB /* BirdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E5195DC7D4007B94DB /* BirdImage.m */; };
+		935190F0195DC7D4007B94DB /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E7195DC7D4007B94DB /* State.m */; };
+		935190F5195DC7E2007B94DB /* api_key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 935190F2195DC7E2007B94DB /* api_key.txt */; };
+		935190F6195DC7E2007B94DB /* FlickrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190F4195DC7E2007B94DB /* FlickrAPI.m */; };
+		935190FB195DC7EB007B94DB /* BirdGroupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190FA195DC7EB007B94DB /* BirdGroupTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,14 +58,34 @@
 		93519081195CD035007B94DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		93519084195CD035007B94DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		93519087195CD035007B94DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		93519089195CD035007B94DB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9351908A195CD035007B94DB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9351908C195CD035007B94DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93519092195CD035007B94DB /* WikiBirdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiBirdTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93519093195CD035007B94DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9351909B195CD035007B94DB /* WikiBirdTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WikiBirdTests-Info.plist"; sourceTree = "<group>"; };
 		9351909D195CD035007B94DB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9351909F195CD035007B94DB /* WikiBirdTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WikiBirdTests.m; sourceTree = "<group>"; };
+		935190D5195DC7D4007B94DB /* Birds.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Birds.xcdatamodel; sourceTree = "<group>"; };
+		935190D7195DC7D4007B94DB /* Bird+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bird+Helper.h"; sourceTree = "<group>"; };
+		935190D8195DC7D4007B94DB /* Bird+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bird+Helper.m"; sourceTree = "<group>"; };
+		935190D9195DC7D4007B94DB /* BirdImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BirdImage+Helper.h"; sourceTree = "<group>"; };
+		935190DA195DC7D4007B94DB /* BirdImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BirdImage+Helper.m"; sourceTree = "<group>"; };
+		935190DB195DC7D4007B94DB /* ManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedObjectContext.h; sourceTree = "<group>"; };
+		935190DC195DC7D4007B94DB /* ManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectContext.m; sourceTree = "<group>"; };
+		935190DD195DC7D4007B94DB /* NSManagedObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Helper.h"; sourceTree = "<group>"; };
+		935190DE195DC7D4007B94DB /* NSManagedObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Helper.m"; sourceTree = "<group>"; };
+		935190E0195DC7D4007B94DB /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
+		935190E1195DC7D4007B94DB /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
+		935190E2195DC7D4007B94DB /* BirdGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdGroup.h; sourceTree = "<group>"; };
+		935190E3195DC7D4007B94DB /* BirdGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdGroup.m; sourceTree = "<group>"; };
+		935190E4195DC7D4007B94DB /* BirdImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdImage.h; sourceTree = "<group>"; };
+		935190E5195DC7D4007B94DB /* BirdImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdImage.m; sourceTree = "<group>"; };
+		935190E6195DC7D4007B94DB /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		935190E7195DC7D4007B94DB /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = State.m; sourceTree = "<group>"; };
+		935190F2195DC7E2007B94DB /* api_key.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = api_key.txt; sourceTree = "<group>"; };
+		935190F3195DC7E2007B94DB /* FlickrAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPI.h; sourceTree = "<group>"; };
+		935190F4195DC7E2007B94DB /* FlickrAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrAPI.m; sourceTree = "<group>"; };
+		935190F9195DC7EB007B94DB /* BirdGroupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdGroupTableViewController.h; sourceTree = "<group>"; };
+		935190FA195DC7EB007B94DB /* BirdGroupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdGroupTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,14 +145,15 @@
 		93519077195CD035007B94DB /* WikiBird */ = {
 			isa = PBXGroup;
 			children = (
+				935190D3195DC7D4007B94DB /* CoreData */,
+				935190F1195DC7E2007B94DB /* Flickr */,
+				93519078195CD035007B94DB /* Supporting Files */,
+				935190F7195DC7EB007B94DB /* ViewControllers */,
 				93519080195CD035007B94DB /* AppDelegate.h */,
 				93519081195CD035007B94DB /* AppDelegate.m */,
 				93519083195CD035007B94DB /* Main_iPhone.storyboard */,
 				93519086195CD035007B94DB /* Main_iPad.storyboard */,
-				93519089195CD035007B94DB /* ViewController.h */,
-				9351908A195CD035007B94DB /* ViewController.m */,
 				9351908C195CD035007B94DB /* Images.xcassets */,
-				93519078195CD035007B94DB /* Supporting Files */,
 			);
 			path = WikiBird;
 			sourceTree = "<group>";
@@ -153,6 +185,73 @@
 				9351909C195CD035007B94DB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		935190D3195DC7D4007B94DB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				935190D4195DC7D4007B94DB /* Birds.xcdatamodeld */,
+				935190D6195DC7D4007B94DB /* Categories */,
+				935190DF195DC7D4007B94DB /* Models */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		935190D6195DC7D4007B94DB /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				935190D7195DC7D4007B94DB /* Bird+Helper.h */,
+				935190D8195DC7D4007B94DB /* Bird+Helper.m */,
+				935190D9195DC7D4007B94DB /* BirdImage+Helper.h */,
+				935190DA195DC7D4007B94DB /* BirdImage+Helper.m */,
+				935190DB195DC7D4007B94DB /* ManagedObjectContext.h */,
+				935190DC195DC7D4007B94DB /* ManagedObjectContext.m */,
+				935190DD195DC7D4007B94DB /* NSManagedObject+Helper.h */,
+				935190DE195DC7D4007B94DB /* NSManagedObject+Helper.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		935190DF195DC7D4007B94DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				935190E0195DC7D4007B94DB /* Bird.h */,
+				935190E1195DC7D4007B94DB /* Bird.m */,
+				935190E2195DC7D4007B94DB /* BirdGroup.h */,
+				935190E3195DC7D4007B94DB /* BirdGroup.m */,
+				935190E4195DC7D4007B94DB /* BirdImage.h */,
+				935190E5195DC7D4007B94DB /* BirdImage.m */,
+				935190E6195DC7D4007B94DB /* State.h */,
+				935190E7195DC7D4007B94DB /* State.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		935190F1195DC7E2007B94DB /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				935190F2195DC7E2007B94DB /* api_key.txt */,
+				935190F3195DC7E2007B94DB /* FlickrAPI.h */,
+				935190F4195DC7E2007B94DB /* FlickrAPI.m */,
+			);
+			path = Flickr;
+			sourceTree = "<group>";
+		};
+		935190F7195DC7EB007B94DB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				935190F8195DC7EB007B94DB /* BirdGroupTableViewController */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		935190F8195DC7EB007B94DB /* BirdGroupTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				935190F9195DC7EB007B94DB /* BirdGroupTableViewController.h */,
+				935190FA195DC7EB007B94DB /* BirdGroupTableViewController.m */,
+			);
+			path = BirdGroupTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +333,7 @@
 				93519088195CD035007B94DB /* Main_iPad.storyboard in Resources */,
 				9351908D195CD035007B94DB /* Images.xcassets in Resources */,
 				93519085195CD035007B94DB /* Main_iPhone.storyboard in Resources */,
+				935190F5195DC7E2007B94DB /* api_key.txt in Resources */,
 				9351907C195CD035007B94DB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -253,8 +353,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9351908B195CD035007B94DB /* ViewController.m in Sources */,
+				935190EF195DC7D4007B94DB /* BirdImage.m in Sources */,
+				935190EB195DC7D4007B94DB /* ManagedObjectContext.m in Sources */,
+				935190E9195DC7D4007B94DB /* Bird+Helper.m in Sources */,
+				935190F6195DC7E2007B94DB /* FlickrAPI.m in Sources */,
+				935190F0195DC7D4007B94DB /* State.m in Sources */,
+				935190ED195DC7D4007B94DB /* Bird.m in Sources */,
+				935190FB195DC7EB007B94DB /* BirdGroupTableViewController.m in Sources */,
 				93519082195CD035007B94DB /* AppDelegate.m in Sources */,
+				935190E8195DC7D4007B94DB /* Birds.xcdatamodeld in Sources */,
+				935190EA195DC7D4007B94DB /* BirdImage+Helper.m in Sources */,
+				935190EE195DC7D4007B94DB /* BirdGroup.m in Sources */,
+				935190EC195DC7D4007B94DB /* NSManagedObject+Helper.m in Sources */,
 				9351907E195CD035007B94DB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +590,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		935190D4195DC7D4007B94DB /* Birds.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				935190D5195DC7D4007B94DB /* Birds.xcdatamodel */,
+			);
+			currentVersion = 935190D5195DC7D4007B94DB /* Birds.xcdatamodel */;
+			path = Birds.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 93519066195CD035007B94DB /* Project object */;
 }
