@@ -1,37 +1,10 @@
 require 'nokogiri'
 require 'open-uri'
-require "awesome_print"
-require 'sqlite3'
-
-db = SQLite3::Database.new( 'birds.db' )
-
-db.execute "DROP TABLE IF EXISTS Bird"
-db.execute "DROP TABLE IF EXISTS BirdGroup"
-
-db.execute <<-SQL
-  CREATE TABLE Bird (
-    common_name TEXT,
-    scientific_name TEXT,
-    url TEXT,
-    description TEXT,
-    bird_id INTEGER PRIMARY KEY,
-    fk_bird_group_id INT,
-    FOREIGN KEY(fk_bird_group_id) REFERENCES BirdGroup(bird_group_id)
-  );
-SQL
-
-db.execute <<-SQL
-  CREATE TABLE BirdGroup (
-    name TEXT,
-    description TEXT,
-    scientific_order TEXT,
-    scientific_family TEXT,
-    bird_group_id INTEGER PRIMARY KEY
-  );
-SQL
+require 'awesome_print'
+require 'json'
 
 def gatherBirds(node)
-  birds = []
+  birds = {}
 
   node.children.each do |item|
     if item.name == 'li'
@@ -40,81 +13,188 @@ def gatherBirds(node)
       link = item.at_css('a')
 
       if link
-        bird['common_name'] = link.text
+        bird['commonName'] = link.text
         bird['url'] = "http://en.wikipedia.org" + link['href']
       end
 
       scientific_name = item.at_css('i')
       if scientific_name
-        bird['scientific_name'] = scientific_name.text
+        bird['scientificName'] = scientific_name.text
       end
 
-      birds.push(bird)
+      birds[bird['commonName']] = bird
     end
 
-    birds.push(gatherBirds(item))
+    birds.merge(gatherBirds(item))
   end
 
-  return birds.flatten
+  return birds
 end
 
-bird_list_url = "http://en.wikipedia.org/wiki/List_of_birds_of_Canada_and_the_United_States"
+def getBirdIntro(birdURL)
+  base_content_url = "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&redirects&page="
 
-bird_list_page = Nokogiri::HTML(open(bird_list_url))
+  bird_page_name = birdURL.split('/')[-1]
 
-bird_groups = []
-group = false
+  summary_json = JSON.parse(open(base_content_url + bird_page_name).read)
+  parseResult = summary_json['parse']
+  if !parseResult
+    nil
+  end
 
-bird_list_page.at_css("#mw-content-text").children.each do |node|
-  if node.name == "h2"
+  textResult = parseResult['text']
 
-    group = {
-      'description' => "",
-      'order' => "",
-      'family' => "",
-      'birds' => [],
-      'name' => node.at_css("span.mw-headline").text
-    }
+  if !textResult
+    nil
+  end
 
-    bird_groups.push(group)
-  elsif group
-    if node.name == "p"
-      text = node.text
+  summary_html = textResult['*']
 
-      if text == ""
-        next
-      end
+  if !summary_html
+    nil
+  end
 
-      if group['order'] != ""
-        group['description'] = text
-      elsif !text.include?("Order:")
-        bird_groups.delete(group)
-        next
+  summary_text = Nokogiri::HTML(summary_html)
+  summary_text.search('.//div').remove
+  summary_text.search('.error').remove
+  summary_text = summary_text.text.strip
+
+  summary_text
+end
+
+states = {
+  "Alaska" => "http://en.wikipedia.org/wiki/List_of_birds_of_Alaska",
+  "Arizona" => "http://en.wikipedia.org/wiki/List_of_birds_of_Arizona",
+  "California" => "http://en.wikipedia.org/wiki/List_of_birds_of_California",
+  "Colorado" => "http://en.wikipedia.org/wiki/List_of_birds_of_Colorado",
+  "Connecticut" => "http://en.wikipedia.org/wiki/List_of_birds_of_Connecticut",
+  "Georgia" => "http://en.wikipedia.org/wiki/List_of_birds_of_Georgia_(U.S._state)",
+  "Hawaii" => "http://en.wikipedia.org/wiki/List_of_birds_of_Hawaii",
+  "Idaho" => "http://en.wikipedia.org/wiki/List_of_birds_of_Idaho",
+  "Illinois" => "http://en.wikipedia.org/wiki/List_of_birds_of_Illinois",
+  "Indiana" => "http://en.wikipedia.org/wiki/List_of_birds_of_Indiana",
+  "Iowa" => "http://en.wikipedia.org/wiki/List_of_birds_of_Iowa",
+  "Kansas" => "http://en.wikipedia.org/wiki/List_of_birds_of_Kansas",
+  "Maine" => "http://en.wikipedia.org/wiki/List_of_birds_of_Maine",
+  "Maryland" => "http://en.wikipedia.org/wiki/List_of_birds_of_Maryland",
+  "Massachusetts" => "http://en.wikipedia.org/wiki/List_of_birds_of_Massachusetts",
+  "Michigan" => "http://en.wikipedia.org/wiki/List_of_birds_of_Michigan",
+  "Minnesota" => "http://en.wikipedia.org/wiki/List_of_birds_of_Minnesota",
+  "Missouri" => "http://en.wikipedia.org/wiki/List_of_birds_of_Missouri",
+  "Montana" => "http://en.wikipedia.org/wiki/List_of_birds_of_Montana",
+  "Nebraska" => "http://en.wikipedia.org/wiki/List_of_birds_of_Nebraska",
+  "Nevada" => "http://en.wikipedia.org/wiki/List_of_birds_of_Nevada",
+  "New Jersey" => "http://en.wikipedia.org/wiki/List_of_birds_of_New_Jersey",
+  "New Mexico" => "http://en.wikipedia.org/wiki/List_of_birds_of_New_Mexico",
+  "New York" => "http://en.wikipedia.org/wiki/List_of_birds_of_New_York",
+  "North Carolina" => "http://en.wikipedia.org/wiki/List_of_birds_of_North_Carolina",
+  "North Dakota" => "http://en.wikipedia.org/wiki/List_of_birds_of_North_Dakota",
+  "Ohio" => "http://en.wikipedia.org/wiki/List_of_birds_of_Ohio",
+  "Oklahoma" => "http://en.wikipedia.org/wiki/List_of_birds_of_Oklahoma",
+  "Oregon" => "http://en.wikipedia.org/wiki/List_of_birds_of_Oregon",
+  "Pennsylvania" => "http://en.wikipedia.org/wiki/List_of_birds_of_Pennsylvania",
+  "South Carolina" => "http://en.wikipedia.org/wiki/List_of_birds_of_South_Carolina",
+  "South Dakota" => "http://en.wikipedia.org/wiki/List_of_birds_of_South_Dakota",
+  "Texas" => "http://en.wikipedia.org/wiki/List_of_birds_of_Texas",
+  "Utah" => "http://en.wikipedia.org/wiki/List_of_birds_of_Utah",
+  "Vermont" => "http://en.wikipedia.org/wiki/List_of_birds_of_Vermont",
+  "Washington" => "http://en.wikipedia.org/wiki/List_of_birds_of_Washington",
+  "West Virginia" => "http://en.wikipedia.org/wiki/List_of_birds_of_West_Virginia",
+  "Wisconsin" => "http://en.wikipedia.org/wiki/List_of_birds_of_Wisconsin",
+  "Wyoming" => "http://en.wikipedia.org/wiki/List_of_birds_of_Wyoming",
+}
+
+birds = {}
+birdGroups = {}
+
+states.each do |stateName, url|
+
+  print "Parsing data for " + stateName + " at " + url + "\n"
+
+  birdListPage = Nokogiri::HTML(open(url))
+  group = false
+
+  birdListPage.at_css("#mw-content-text").children.each do |node|
+
+    if node.name == "h2"
+
+      groupName = node.at_css("span.mw-headline").text
+      group = {
+        'birds' => []
+      }
+
+      if birdGroups[groupName]
+        group = birdGroups[groupName]
       else
-        order_match = /Order:\W*(\w*)/.match(text)
-        family_match = /Family:\W*(\w*)/.match(text)
-        group['order'] = order_match[1]
-        group['family'] = family_match[1]
+        birdGroups[groupName] = group
       end
-    elsif node.name == "ul"
-      group['birds'] = gatherBirds(node)
+
+      group['name'] = groupName
+
+    elsif group
+
+      if node.name == "p"
+        text = node.text
+
+        if text == ""
+          next
+        end
+
+        if group['order'] && group['order'] != ""
+          group['description'] = text
+
+        elsif !text.include?("Order:")
+          birdGroups.delete(group['name'])
+          group = false
+          next
+
+        else
+          orderMatch = /Order:\W*(\w*)/.match(text)
+          familyMatch = /Family:\W*(\w*)/.match(text)
+          group['order'] = orderMatch[1]
+          group['family'] = familyMatch[1]
+
+        end
+
+      elsif node.name == "ul"
+
+        if !group['order'] || group['order'] == ""
+          birdGroups.delete(group['name'])
+          group = false
+          next
+
+        end
+
+        print "Catching " + group['name'] + "....\n"
+        newBirds = gatherBirds(node)
+        newBirds.each { |birdName, bird|
+          bird['states'] = [stateName]
+          bird['groups'] = [group['name']]
+        }
+
+        birds = birds.merge(newBirds){ |key, oldval, newval|
+          newval['states'] = newval['states'].push(oldval['states']).flatten.uniq
+          newval['groups'] = newval['groups'].push(oldval['groups']).flatten.uniq
+          newval
+        }
+
+        group['birds'] = group['birds'].push(newBirds.keys).flatten
+
+      end
     end
   end
 end
 
-for group in bird_groups
-
-  if group['order'] == ""
-    next;
-  end
-
-  db.execute("INSERT INTO BirdGroup (name, description, scientific_order, scientific_family) VALUES (?, ?, ?, ?)", [group['name'], group['description'], group['order'], group['family']])
-
-  bird_group_id = db.last_insert_row_id
-
-  for bird in group['birds']
-    db.execute("INSERT INTO Bird (common_name, scientific_name, url, fk_bird_group_id) VALUES (?, ?, ?, ?)", [bird['common_name'], bird['scientific_name'], bird['url'], bird_group_id])
-  end
+birds.each_with_index do |(birdName, bird), index|
+  print index.to_s + "/" + birds.length.to_s + ": Getting bird info " + bird['url'] + "\n"
+  bird['intro'] = getBirdIntro(bird['url'])
 end
 
-#ap bird_groups
+File.open('birdInfo.json', 'w') { |file|
+  output = {
+    'birds' => birds,
+    'birdGroups' => birdGroups
+  }
+
+  file.write(JSON.pretty_generate(output))
+}
