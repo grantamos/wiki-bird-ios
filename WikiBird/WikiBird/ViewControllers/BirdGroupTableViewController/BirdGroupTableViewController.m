@@ -8,6 +8,7 @@
 
 #import "BirdGroupTableViewController.h"
 #import "BirdGroup.h"
+#import "BirdTableViewController.h"
 
 #define CELL_IDENTIFIER @"BirdGroupCell"
 
@@ -15,6 +16,7 @@
 
 - (void)viewDidLoad
 {
+    [self setTitle:@"Bird Groups"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
     [self performFetch];
 }
@@ -39,6 +41,13 @@
     BirdGroup *birdGroup = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = birdGroup.name;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    BirdTableViewController *birdVC = [BirdTableViewController new];
+    
+    [self.navigationController pushViewController:birdVC animated:YES];
 }
 
 @end

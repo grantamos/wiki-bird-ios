@@ -7,12 +7,21 @@
 //
 
 #import "AppDelegate.h"
+#import "BirdGroupTableViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    BirdGroupTableViewController *birdGroupVC = [BirdGroupTableViewController new];
+    
+    UINavigationController *nav = [[UINavigationController alloc]  initWithRootViewController:birdGroupVC];
+    self.window.rootViewController = nav;
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 							

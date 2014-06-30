@@ -11,14 +11,16 @@
 		933278FF1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 933278FC1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm */; };
 		933279001960F16B00CD9196 /* WikiBirdImporter.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */; };
 		933279051960F31900CD9196 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279041960F31900CD9196 /* CoreDataTableViewController.m */; };
+		933279091961C9DB00CD9196 /* BirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279081961C9DB00CD9196 /* BirdTableViewController.m */; };
+		9332790B1961D07A00CD9196 /* BirdGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9332790A1961D07A00CD9196 /* BirdGroupTableViewController.xib */; };
+		9332790E1961D33700CD9196 /* BirdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332790D1961D33700CD9196 /* BirdImage.m */; };
+		933279151961D42400CD9196 /* BirdTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933279141961D42400CD9196 /* BirdTableViewController.xib */; };
 		93519072195CD035007B94DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519071195CD035007B94DB /* Foundation.framework */; };
 		93519074195CD035007B94DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519073195CD035007B94DB /* CoreGraphics.framework */; };
 		93519076195CD035007B94DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519075195CD035007B94DB /* UIKit.framework */; };
 		9351907C195CD035007B94DB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9351907A195CD035007B94DB /* InfoPlist.strings */; };
 		9351907E195CD035007B94DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9351907D195CD035007B94DB /* main.m */; };
 		93519082195CD035007B94DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93519081195CD035007B94DB /* AppDelegate.m */; };
-		93519085195CD035007B94DB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93519083195CD035007B94DB /* Main_iPhone.storyboard */; };
-		93519088195CD035007B94DB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93519086195CD035007B94DB /* Main_iPad.storyboard */; };
 		9351908D195CD035007B94DB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9351908C195CD035007B94DB /* Images.xcassets */; };
 		93519094195CD035007B94DB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519093195CD035007B94DB /* XCTest.framework */; };
 		93519095195CD035007B94DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519071195CD035007B94DB /* Foundation.framework */; };
@@ -32,7 +34,6 @@
 		935190EC195DC7D4007B94DB /* NSManagedObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190DE195DC7D4007B94DB /* NSManagedObject+Helper.m */; };
 		935190ED195DC7D4007B94DB /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E1195DC7D4007B94DB /* Bird.m */; };
 		935190EE195DC7D4007B94DB /* BirdGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E3195DC7D4007B94DB /* BirdGroup.m */; };
-		935190EF195DC7D4007B94DB /* BirdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E5195DC7D4007B94DB /* BirdImage.m */; };
 		935190F0195DC7D4007B94DB /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E7195DC7D4007B94DB /* State.m */; };
 		935190F5195DC7E2007B94DB /* api_key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 935190F2195DC7E2007B94DB /* api_key.txt */; };
 		935190F6195DC7E2007B94DB /* FlickrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190F4195DC7E2007B94DB /* FlickrAPI.m */; };
@@ -55,6 +56,12 @@
 		933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WikiBirdImporter.sqlite-wal"; sourceTree = "<group>"; };
 		933279031960F31900CD9196 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		933279041960F31900CD9196 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		933279071961C9DB00CD9196 /* BirdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdTableViewController.h; sourceTree = "<group>"; };
+		933279081961C9DB00CD9196 /* BirdTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdTableViewController.m; sourceTree = "<group>"; };
+		9332790A1961D07A00CD9196 /* BirdGroupTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirdGroupTableViewController.xib; sourceTree = "<group>"; };
+		9332790C1961D33700CD9196 /* BirdImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdImage.h; sourceTree = "<group>"; };
+		9332790D1961D33700CD9196 /* BirdImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdImage.m; sourceTree = "<group>"; };
+		933279141961D42400CD9196 /* BirdTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirdTableViewController.xib; sourceTree = "<group>"; };
 		9351906E195CD035007B94DB /* WikiBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93519071195CD035007B94DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93519073195CD035007B94DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -65,8 +72,6 @@
 		9351907F195CD035007B94DB /* WikiBird-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WikiBird-Prefix.pch"; sourceTree = "<group>"; };
 		93519080195CD035007B94DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93519081195CD035007B94DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		93519084195CD035007B94DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		93519087195CD035007B94DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		9351908C195CD035007B94DB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93519092195CD035007B94DB /* WikiBirdTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiBirdTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93519093195CD035007B94DB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -86,8 +91,6 @@
 		935190E1195DC7D4007B94DB /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
 		935190E2195DC7D4007B94DB /* BirdGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdGroup.h; sourceTree = "<group>"; };
 		935190E3195DC7D4007B94DB /* BirdGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdGroup.m; sourceTree = "<group>"; };
-		935190E4195DC7D4007B94DB /* BirdImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdImage.h; sourceTree = "<group>"; };
-		935190E5195DC7D4007B94DB /* BirdImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdImage.m; sourceTree = "<group>"; };
 		935190E6195DC7D4007B94DB /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
 		935190E7195DC7D4007B94DB /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = State.m; sourceTree = "<group>"; };
 		935190F2195DC7E2007B94DB /* api_key.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = api_key.txt; sourceTree = "<group>"; };
@@ -140,6 +143,16 @@
 			path = CoreDataViewController;
 			sourceTree = "<group>";
 		};
+		933279061961C9C300CD9196 /* BirdTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				933279071961C9DB00CD9196 /* BirdTableViewController.h */,
+				933279081961C9DB00CD9196 /* BirdTableViewController.m */,
+				933279141961D42400CD9196 /* BirdTableViewController.xib */,
+			);
+			path = BirdTableViewController;
+			sourceTree = "<group>";
+		};
 		93519065195CD035007B94DB = {
 			isa = PBXGroup;
 			children = (
@@ -179,8 +192,6 @@
 				935190F7195DC7EB007B94DB /* ViewControllers */,
 				93519080195CD035007B94DB /* AppDelegate.h */,
 				93519081195CD035007B94DB /* AppDelegate.m */,
-				93519083195CD035007B94DB /* Main_iPhone.storyboard */,
-				93519086195CD035007B94DB /* Main_iPad.storyboard */,
 				9351908C195CD035007B94DB /* Images.xcassets */,
 			);
 			path = WikiBird;
@@ -244,12 +255,12 @@
 		935190DF195DC7D4007B94DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9332790C1961D33700CD9196 /* BirdImage.h */,
+				9332790D1961D33700CD9196 /* BirdImage.m */,
 				935190E0195DC7D4007B94DB /* Bird.h */,
 				935190E1195DC7D4007B94DB /* Bird.m */,
 				935190E2195DC7D4007B94DB /* BirdGroup.h */,
 				935190E3195DC7D4007B94DB /* BirdGroup.m */,
-				935190E4195DC7D4007B94DB /* BirdImage.h */,
-				935190E5195DC7D4007B94DB /* BirdImage.m */,
 				935190E6195DC7D4007B94DB /* State.h */,
 				935190E7195DC7D4007B94DB /* State.m */,
 			);
@@ -269,8 +280,9 @@
 		935190F7195DC7EB007B94DB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				933279021960F2D300CD9196 /* CoreDataViewController */,
 				935190F8195DC7EB007B94DB /* BirdGroupTableViewController */,
+				933279061961C9C300CD9196 /* BirdTableViewController */,
+				933279021960F2D300CD9196 /* CoreDataViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -280,6 +292,7 @@
 			children = (
 				935190F9195DC7EB007B94DB /* BirdGroupTableViewController.h */,
 				935190FA195DC7EB007B94DB /* BirdGroupTableViewController.m */,
+				9332790A1961D07A00CD9196 /* BirdGroupTableViewController.xib */,
 			);
 			path = BirdGroupTableViewController;
 			sourceTree = "<group>";
@@ -360,11 +373,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93519088195CD035007B94DB /* Main_iPad.storyboard in Resources */,
 				933278FF1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm in Resources */,
+				9332790B1961D07A00CD9196 /* BirdGroupTableViewController.xib in Resources */,
 				9351908D195CD035007B94DB /* Images.xcassets in Resources */,
 				933279001960F16B00CD9196 /* WikiBirdImporter.sqlite-wal in Resources */,
-				93519085195CD035007B94DB /* Main_iPhone.storyboard in Resources */,
+				933279151961D42400CD9196 /* BirdTableViewController.xib in Resources */,
 				935190F5195DC7E2007B94DB /* api_key.txt in Resources */,
 				933278FE1960F16B00CD9196 /* WikiBirdImporter.sqlite in Resources */,
 				9351907C195CD035007B94DB /* InfoPlist.strings in Resources */,
@@ -386,7 +399,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				935190EF195DC7D4007B94DB /* BirdImage.m in Sources */,
+				9332790E1961D33700CD9196 /* BirdImage.m in Sources */,
 				935190EB195DC7D4007B94DB /* ManagedObjectContext.m in Sources */,
 				933279051960F31900CD9196 /* CoreDataTableViewController.m in Sources */,
 				935190E9195DC7D4007B94DB /* Bird+Helper.m in Sources */,
@@ -396,6 +409,7 @@
 				935190FB195DC7EB007B94DB /* BirdGroupTableViewController.m in Sources */,
 				93519082195CD035007B94DB /* AppDelegate.m in Sources */,
 				935190E8195DC7D4007B94DB /* WikiBird.xcdatamodeld in Sources */,
+				933279091961C9DB00CD9196 /* BirdTableViewController.m in Sources */,
 				935190EA195DC7D4007B94DB /* BirdImage+Helper.m in Sources */,
 				935190EE195DC7D4007B94DB /* BirdGroup.m in Sources */,
 				935190EC195DC7D4007B94DB /* NSManagedObject+Helper.m in Sources */,
@@ -428,22 +442,6 @@
 				9351907B195CD035007B94DB /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		93519083195CD035007B94DB /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93519084195CD035007B94DB /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		93519086195CD035007B94DB /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				93519087195CD035007B94DB /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		9351909C195CD035007B94DB /* InfoPlist.strings */ = {

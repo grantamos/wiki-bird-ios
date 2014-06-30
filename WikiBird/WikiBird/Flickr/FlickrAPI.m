@@ -8,11 +8,8 @@
 
 #import "FlickrAPI.h"
 
-#import "ManagedObjectContext.h"
-
 @implementation FlickrAPI
 {
-    NSManagedObjectContext *_context;
     NSURLSession *_session;
     NSString *_apiKey;
 }
@@ -40,7 +37,6 @@
     
     if (self)
     {
-        _context = [[ManagedObjectContext sharedInstance] managedObjectContext];
         _session = [NSURLSession sharedSession];
         
         NSString *path = [[NSBundle mainBundle] pathForResource:@"api_key" ofType:@"txt"];

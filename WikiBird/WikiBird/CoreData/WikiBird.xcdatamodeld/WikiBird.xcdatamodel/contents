@@ -17,6 +17,7 @@
         <relationship name="birds" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bird" inverseName="birdGroup" inverseEntity="Bird" syncable="YES"/>
     </entity>
     <entity name="BirdImage" representedClassName="BirdImage" syncable="YES">
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="bird" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bird" inverseName="images" inverseEntity="Bird" syncable="YES"/>
     </entity>
@@ -27,7 +28,7 @@
     <elements>
         <element name="Bird" positionX="-63" positionY="-18" width="128" height="148"/>
         <element name="BirdGroup" positionX="-54" positionY="-9" width="128" height="118"/>
+        <element name="BirdImage" positionX="-27" positionY="63" width="128" height="88"/>
         <element name="State" positionX="-36" positionY="9" width="128" height="73"/>
-        <element name="BirdImage" positionX="-27" positionY="63" width="128" height="73"/>
     </elements>
 </model>
