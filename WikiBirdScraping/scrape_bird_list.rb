@@ -71,7 +71,7 @@ end
 def getImageURLs(birdname, api_key)
   results = []
   birdname = URI::encode(birdname)
-  jsonString = open("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+api_key+"&text="+birdname+"&sort=relevance&format=json&nojsoncallback=1").read
+  jsonString = open("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+api_key+"&text="+birdname+"&sort=relevance&format=json&nojsoncallback=1&per_page=10").read
   json = JSON.parse(jsonString)
 
   photos = json['photos']
@@ -219,12 +219,17 @@ Test
         birds = birds.merge(newBirds){ |key, oldval, newval|
           newval['states'] = newval['states'].push(oldval['states']).flatten.uniq
           newval['groups'] = newval['groups'].push(oldval['groups']).flatten.uniq
+
+          if newval['scientificName'] == nil
+            newval['scientificName'] = oldval['scientificName']
+          end
+
           newval
         }
 
-        group['birds'] = group['birds'].push(newBirds.keys).flatten
+        group['birds'] = group['birds'].push(newBirds.keys).flatten.uniq
 
-        if group['birds'].length == 0 || group['order'] == "none"
+        if group['birds'].length == 0 || group['order'] == "none" || group['order'] == nil
           birdGroups.delete(group['name'])
           group = false
         end
@@ -270,7 +275,7 @@ birds.each_with_index do |(birdName, bird), index|
         bird['intro'] = oldBird['intro']
       end
       if oldBird['images'] != nil
-        bird['images'] = oldBird['images']
+        bird['images'] = oldBird['images'].first(10)
       end
     end
   end
@@ -287,6 +292,15 @@ birds.each_with_index do |(birdName, bird), index|
 end
 
 File.open('wikiBird.json', 'w') { |file|
+  output = {
+    'birds' => birds,
+    'birdGroups' => birdGroups
+  }
+
+  file.write(JSON.pretty_generate(output))
+}
+
+File.open('wikiBird_backup.json', 'w') { |file|
   output = {
     'birds' => birds,
     'birdGroups' => birdGroups
