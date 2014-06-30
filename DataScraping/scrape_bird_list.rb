@@ -38,20 +38,20 @@ def getBirdIntro(birdURL)
 
   summary_json = JSON.parse(open(base_content_url + bird_page_name).read)
   parseResult = summary_json['parse']
-  if !parseResult
-    nil
+  if parseResult == nil
+    return nil
   end
 
   textResult = parseResult['text']
 
-  if !textResult
-    nil
+  if textResult
+    return nil
   end
 
   summary_html = textResult['*']
 
-  if !summary_html
-    nil
+  if summary_html == nil
+    return nil
   end
 
   summary_text = Nokogiri::HTML(summary_html)
@@ -185,8 +185,32 @@ states.each do |stateName, url|
   end
 end
 
+elapsedTime = []
+
+calculateETA = lambda {
+  if elapsedTime.length == 40
+    elapsedTime.shift
+  end
+
+  elapsedTime.push(Time.now)
+
+  eta = 0
+
+  elapsedTime.each_with_index do |time, index|
+    if index == 0
+      next
+    end
+
+    eta = eta + (time - elapsedTime[index - 1])
+  end
+
+  return eta / elapsedTime.length
+}
+
 birds.each_with_index do |(birdName, bird), index|
-  print index.to_s + "/" + birds.length.to_s + ": Getting bird info " + bird['url'] + "\n"
+  eta = calculateETA.call * (birds.length - index)
+  eta = (eta*100).to_i / 100.0
+  print eta.to_s + " seconds remaining - " + index.to_s + "/" + birds.length.to_s + ": Getting bird info " + bird['url'] + "\n"
   bird['intro'] = getBirdIntro(bird['url'])
 end
 
