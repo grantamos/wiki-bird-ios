@@ -214,7 +214,7 @@ birds.each_with_index do |(birdName, bird), index|
   bird['intro'] = getBirdIntro(bird['url'])
 end
 
-File.open('birdInfo.json', 'w') { |file|
+File.open('wikiBird.json', 'w') { |file|
   output = {
     'birds' => birds,
     'birdGroups' => birdGroups

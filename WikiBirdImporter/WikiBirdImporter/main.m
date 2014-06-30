@@ -13,7 +13,7 @@ static NSManagedObjectModel *managedObjectModel()
         return model;
     }
     
-    NSString *path = @"WikiBirdImporter";
+    NSString *path = @"WikiBird";
     path = [path stringByDeletingPathExtension];
     NSURL *modelURL = [NSURL fileURLWithPath:[path stringByAppendingPathExtension:@"momd"]];
     model = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
@@ -50,6 +50,11 @@ static NSManagedObjectContext *managedObjectContext()
     return context;
 }
 
+static void importData()
+{
+    
+}
+
 int main(int argc, const char * argv[])
 {
 
@@ -57,7 +62,8 @@ int main(int argc, const char * argv[])
         // Create the managed object context
         NSManagedObjectContext *context = managedObjectContext();
         
-        // Custom code here...
+        importData();
+        
         // Save the managed object context
         NSError *error = nil;
         if (![context save:&error]) {
