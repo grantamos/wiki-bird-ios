@@ -58,7 +58,7 @@
 
 - (void)getPhotosForQuery:(NSString*)query withCompletionHandler:(void (^)(NSDictionary*))completionHandler
 {
-    [_session dataTaskWithURL:[self flickrURLWithQuery:query]
+    [[_session dataTaskWithURL:[self flickrURLWithQuery:query]
     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
         NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
@@ -78,8 +78,10 @@
             return;
         }
         
-        completionHandler(root);
-    }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            completionHandler(root);
+        });
+    }] resume];
 }
 
 - (NSURL*)flickrURLWithQuery:(NSString*)query
