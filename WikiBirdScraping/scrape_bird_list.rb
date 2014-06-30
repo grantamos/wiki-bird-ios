@@ -38,19 +38,23 @@ def getBirdIntro(birdURL)
 
   summary_json = JSON.parse(open(base_content_url + bird_page_name).read)
   parseResult = summary_json['parse']
+
   if parseResult == nil
+    print "NO PARSE"
     return nil
   end
 
   textResult = parseResult['text']
 
-  if textResult
+  if textResult == nil
+    print "NO TEXT"
     return nil
   end
 
   summary_html = textResult['*']
 
   if summary_html == nil
+    print "NO *"
     return nil
   end
 
@@ -119,6 +123,11 @@ states.each do |stateName, url|
     if node.name == "h2"
 
       groupName = node.at_css("span.mw-headline").text
+
+      if groupName == "See also" || groupName == "References" || groupName == "External links"
+        next
+      end
+
       group = {
         'birds' => []
       }
@@ -144,6 +153,7 @@ states.each do |stateName, url|
           group['description'] = text
 
         elsif !text.include?("Order:")
+          print "No Order - Bad group " + group['name'] + ".\n"
           birdGroups.delete(group['name'])
           group = false
           next
@@ -159,13 +169,13 @@ states.each do |stateName, url|
       elsif node.name == "ul"
 
         if !group['order'] || group['order'] == ""
+          print "Empty order - Bad group " + group['name'] + ".\n"
           birdGroups.delete(group['name'])
           group = false
           next
 
         end
 
-        print "Catching " + group['name'] + "....\n"
         newBirds = gatherBirds(node)
         newBirds.each { |birdName, bird|
           bird['states'] = [stateName]
@@ -179,6 +189,11 @@ states.each do |stateName, url|
         }
 
         group['birds'] = group['birds'].push(newBirds.keys).flatten
+
+        if group['birds'].length == 0 || group['order'] == "none"
+          birdGroups.delete(group['name'])
+          group = false
+        end
 
       end
     end
@@ -211,7 +226,8 @@ birds.each_with_index do |(birdName, bird), index|
   eta = calculateETA.call * (birds.length - index)
   eta = (eta*100).to_i / 100.0
   print eta.to_s + " seconds remaining - " + index.to_s + "/" + birds.length.to_s + ": Getting bird info " + bird['url'] + "\n"
-  bird['intro'] = getBirdIntro(bird['url'])
+  intro = getBirdIntro(bird['url'])
+  bird['intro'] = intro
 end
 
 File.open('wikiBird.json', 'w') { |file|
