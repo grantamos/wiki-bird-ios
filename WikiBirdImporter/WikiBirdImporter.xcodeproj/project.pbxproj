@@ -12,11 +12,15 @@
 		933278D91960E34600CD9196 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 933278D81960E34600CD9196 /* main.m */; };
 		933278E01960E34600CD9196 /* WikiBirdImporter.1 in Copy Files */ = {isa = PBXBuildFile; fileRef = 933278DF1960E34600CD9196 /* WikiBirdImporter.1 */; };
 		933278E81960E48900CD9196 /* WikiBird.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 933278E61960E48900CD9196 /* WikiBird.xcdatamodeld */; };
-		933278F11960E53E00CD9196 /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 933278EA1960E53E00CD9196 /* Bird.m */; };
-		933278F21960E53E00CD9196 /* BirdGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 933278EC1960E53E00CD9196 /* BirdGroup.m */; };
-		933278F31960E53E00CD9196 /* BirdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 933278EE1960E53E00CD9196 /* BirdImage.m */; };
-		933278F41960E53E00CD9196 /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = 933278F01960E53E00CD9196 /* State.m */; };
 		933278F91960E86B00CD9196 /* wikiBird.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 933278F51960E61800CD9196 /* wikiBird.json */; };
+		933279421962314D00CD9196 /* Bird+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279321962314D00CD9196 /* Bird+Helper.m */; };
+		933279431962314D00CD9196 /* BirdImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279341962314D00CD9196 /* BirdImage+Helper.m */; };
+		933279441962314D00CD9196 /* ManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279361962314D00CD9196 /* ManagedObjectContext.m */; };
+		933279451962314D00CD9196 /* NSManagedObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279381962314D00CD9196 /* NSManagedObject+Helper.m */; };
+		933279461962314D00CD9196 /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332793B1962314D00CD9196 /* Bird.m */; };
+		933279471962314D00CD9196 /* BirdGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332793D1962314D00CD9196 /* BirdGroup.m */; };
+		933279481962314D00CD9196 /* BirdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332793F1962314D00CD9196 /* BirdImage.m */; };
+		933279491962314D00CD9196 /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279411962314D00CD9196 /* State.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,15 +55,23 @@
 		933278DB1960E34600CD9196 /* WikiBirdImporter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WikiBirdImporter-Prefix.pch"; sourceTree = "<group>"; };
 		933278DF1960E34600CD9196 /* WikiBirdImporter.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = WikiBirdImporter.1; sourceTree = "<group>"; };
 		933278E71960E48900CD9196 /* WikiBird.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WikiBird.xcdatamodel; sourceTree = "<group>"; };
-		933278E91960E53E00CD9196 /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bird.h; path = ../../WikiBird/WikiBird/CoreData/Models/Bird.h; sourceTree = "<group>"; };
-		933278EA1960E53E00CD9196 /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bird.m; path = ../../WikiBird/WikiBird/CoreData/Models/Bird.m; sourceTree = "<group>"; };
-		933278EB1960E53E00CD9196 /* BirdGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirdGroup.h; path = ../../WikiBird/WikiBird/CoreData/Models/BirdGroup.h; sourceTree = "<group>"; };
-		933278EC1960E53E00CD9196 /* BirdGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirdGroup.m; path = ../../WikiBird/WikiBird/CoreData/Models/BirdGroup.m; sourceTree = "<group>"; };
-		933278ED1960E53E00CD9196 /* BirdImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirdImage.h; path = ../../WikiBird/WikiBird/CoreData/Models/BirdImage.h; sourceTree = "<group>"; };
-		933278EE1960E53E00CD9196 /* BirdImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirdImage.m; path = ../../WikiBird/WikiBird/CoreData/Models/BirdImage.m; sourceTree = "<group>"; };
-		933278EF1960E53E00CD9196 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = State.h; path = ../../WikiBird/WikiBird/CoreData/Models/State.h; sourceTree = "<group>"; };
-		933278F01960E53E00CD9196 /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = State.m; path = ../../WikiBird/WikiBird/CoreData/Models/State.m; sourceTree = "<group>"; };
 		933278F51960E61800CD9196 /* wikiBird.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = wikiBird.json; path = ../../WikiBirdScraping/wikiBird.json; sourceTree = "<group>"; };
+		933279311962314D00CD9196 /* Bird+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bird+Helper.h"; sourceTree = "<group>"; };
+		933279321962314D00CD9196 /* Bird+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Bird+Helper.m"; sourceTree = "<group>"; };
+		933279331962314D00CD9196 /* BirdImage+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BirdImage+Helper.h"; sourceTree = "<group>"; };
+		933279341962314D00CD9196 /* BirdImage+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BirdImage+Helper.m"; sourceTree = "<group>"; };
+		933279351962314D00CD9196 /* ManagedObjectContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedObjectContext.h; sourceTree = "<group>"; };
+		933279361962314D00CD9196 /* ManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectContext.m; sourceTree = "<group>"; };
+		933279371962314D00CD9196 /* NSManagedObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Helper.h"; sourceTree = "<group>"; };
+		933279381962314D00CD9196 /* NSManagedObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Helper.m"; sourceTree = "<group>"; };
+		9332793A1962314D00CD9196 /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
+		9332793B1962314D00CD9196 /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
+		9332793C1962314D00CD9196 /* BirdGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdGroup.h; sourceTree = "<group>"; };
+		9332793D1962314D00CD9196 /* BirdGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdGroup.m; sourceTree = "<group>"; };
+		9332793E1962314D00CD9196 /* BirdImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdImage.h; sourceTree = "<group>"; };
+		9332793F1962314D00CD9196 /* BirdImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdImage.m; sourceTree = "<group>"; };
+		933279401962314D00CD9196 /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
+		933279411962314D00CD9196 /* State.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = State.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,15 +116,9 @@
 		933278D71960E34600CD9196 /* WikiBirdImporter */ = {
 			isa = PBXGroup;
 			children = (
+				933279301962314D00CD9196 /* Categories */,
+				933279391962314D00CD9196 /* Models */,
 				933278F51960E61800CD9196 /* wikiBird.json */,
-				933278E91960E53E00CD9196 /* Bird.h */,
-				933278EA1960E53E00CD9196 /* Bird.m */,
-				933278EB1960E53E00CD9196 /* BirdGroup.h */,
-				933278EC1960E53E00CD9196 /* BirdGroup.m */,
-				933278ED1960E53E00CD9196 /* BirdImage.h */,
-				933278EE1960E53E00CD9196 /* BirdImage.m */,
-				933278EF1960E53E00CD9196 /* State.h */,
-				933278F01960E53E00CD9196 /* State.m */,
 				933278E61960E48900CD9196 /* WikiBird.xcdatamodeld */,
 				933278D81960E34600CD9196 /* main.m */,
 				933278DF1960E34600CD9196 /* WikiBirdImporter.1 */,
@@ -127,6 +133,38 @@
 				933278DB1960E34600CD9196 /* WikiBirdImporter-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		933279301962314D00CD9196 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				933279311962314D00CD9196 /* Bird+Helper.h */,
+				933279321962314D00CD9196 /* Bird+Helper.m */,
+				933279331962314D00CD9196 /* BirdImage+Helper.h */,
+				933279341962314D00CD9196 /* BirdImage+Helper.m */,
+				933279351962314D00CD9196 /* ManagedObjectContext.h */,
+				933279361962314D00CD9196 /* ManagedObjectContext.m */,
+				933279371962314D00CD9196 /* NSManagedObject+Helper.h */,
+				933279381962314D00CD9196 /* NSManagedObject+Helper.m */,
+			);
+			name = Categories;
+			path = ../../WikiBird/WikiBird/CoreData/Categories;
+			sourceTree = "<group>";
+		};
+		933279391962314D00CD9196 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9332793A1962314D00CD9196 /* Bird.h */,
+				9332793B1962314D00CD9196 /* Bird.m */,
+				9332793C1962314D00CD9196 /* BirdGroup.h */,
+				9332793D1962314D00CD9196 /* BirdGroup.m */,
+				9332793E1962314D00CD9196 /* BirdImage.h */,
+				9332793F1962314D00CD9196 /* BirdImage.m */,
+				933279401962314D00CD9196 /* State.h */,
+				933279411962314D00CD9196 /* State.m */,
+			);
+			name = Models;
+			path = ../../WikiBird/WikiBird/CoreData/Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,12 +219,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933278F31960E53E00CD9196 /* BirdImage.m in Sources */,
-				933278F21960E53E00CD9196 /* BirdGroup.m in Sources */,
+				933279481962314D00CD9196 /* BirdImage.m in Sources */,
+				933279491962314D00CD9196 /* State.m in Sources */,
+				933279431962314D00CD9196 /* BirdImage+Helper.m in Sources */,
+				933279451962314D00CD9196 /* NSManagedObject+Helper.m in Sources */,
 				933278E81960E48900CD9196 /* WikiBird.xcdatamodeld in Sources */,
-				933278F41960E53E00CD9196 /* State.m in Sources */,
+				933279461962314D00CD9196 /* Bird.m in Sources */,
+				933279471962314D00CD9196 /* BirdGroup.m in Sources */,
+				933279441962314D00CD9196 /* ManagedObjectContext.m in Sources */,
 				933278D91960E34600CD9196 /* main.m in Sources */,
-				933278F11960E53E00CD9196 /* Bird.m in Sources */,
+				933279421962314D00CD9196 /* Bird+Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +342,7 @@
 				933278E51960E34600CD9196 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
