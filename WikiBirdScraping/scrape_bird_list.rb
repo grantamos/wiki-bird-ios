@@ -15,6 +15,8 @@ def gatherBirds(node)
       if link
         bird['commonName'] = link.text
         bird['url'] = "http://en.wikipedia.org" + link['href']
+      else
+        next
       end
 
       scientific_name = item.at_css('i')
@@ -40,21 +42,21 @@ def getBirdIntro(birdURL)
   parseResult = summary_json['parse']
 
   if parseResult == nil
-    print "NO PARSE"
+    print "NO PARSE\n"
     return nil
   end
 
   textResult = parseResult['text']
 
   if textResult == nil
-    print "NO TEXT"
+    print "NO TEXT\n"
     return nil
   end
 
   summary_html = textResult['*']
 
   if summary_html == nil
-    print "NO *"
+    print "NO *\n"
     return nil
   end
 
@@ -64,6 +66,29 @@ def getBirdIntro(birdURL)
   summary_text = summary_text.text.strip
 
   summary_text
+end
+
+def getImageURLs(birdname, api_key)
+  results = []
+  birdname = URI::encode(birdname)
+  jsonString = open("https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+api_key+"&text="+birdname+"&sort=relevance&format=json&nojsoncallback=1").read
+  json = JSON.parse(jsonString)
+
+  photos = json['photos']
+  if photos == nil
+    nil
+  end
+
+  photoArray = photos['photo']
+  if photoArray == nil
+    nil
+  end
+
+  photoArray.each do |photo|
+    results.push("https://farm"+photo["farm"].to_s+".staticflickr.com/"+photo["server"].to_s+"/"+photo["id"].to_s+"_"+photo["secret"].to_s+"_n.jpg")
+  end
+
+  results
 end
 
 states = {
@@ -110,6 +135,13 @@ states = {
 
 birds = {}
 birdGroups = {}
+oldData = nil
+
+api_key = IO.read('api_key.txt')
+
+if File.file?('wikiBird.json')
+  oldData = JSON.parse(IO.read('wikiBird.json'))
+end
 
 states.each do |stateName, url|
 
@@ -154,8 +186,8 @@ states.each do |stateName, url|
 
         elsif !text.include?("Order:")
           print "No Order - Bad group " + group['name'] + ".\n"
-          birdGroups.delete(group['name'])
-          group = false
+          #birdGroups.delete(group['name'])
+          #group = false
           next
 
         else
@@ -168,6 +200,7 @@ states.each do |stateName, url|
 
       elsif node.name == "ul"
 
+<<-Test
         if !group['order'] || group['order'] == ""
           print "Empty order - Bad group " + group['name'] + ".\n"
           birdGroups.delete(group['name'])
@@ -175,6 +208,7 @@ states.each do |stateName, url|
           next
 
         end
+Test
 
         newBirds = gatherBirds(node)
         newBirds.each { |birdName, bird|
@@ -203,7 +237,7 @@ end
 elapsedTime = []
 
 calculateETA = lambda {
-  if elapsedTime.length == 40
+  if elapsedTime.length == 100
     elapsedTime.shift
   end
 
@@ -223,11 +257,33 @@ calculateETA = lambda {
 }
 
 birds.each_with_index do |(birdName, bird), index|
+
   eta = calculateETA.call * (birds.length - index)
   eta = (eta*100).to_i / 100.0
-  print eta.to_s + " seconds remaining - " + index.to_s + "/" + birds.length.to_s + ": Getting bird info " + bird['url'] + "\n"
-  intro = getBirdIntro(bird['url'])
-  bird['intro'] = intro
+  print eta.to_s + " seconds remaining - " + index.to_s + "/" + birds.length.to_s + ": Getting bird " + birdName + "\n"
+
+  if oldData != nil
+    oldBirds = oldData['birds']
+    oldBird = oldBirds[birdName]
+    if oldBird != nil
+      if oldBird['intro'] != nil
+        bird['intro'] = oldBird['intro']
+      end
+      if oldBird['images'] != nil
+        bird['images'] = oldBird['images']
+      end
+    end
+  end
+
+  if bird['url'] != nil && bird['intro'] == nil
+    intro = getBirdIntro(bird['url'])
+    bird['intro'] = intro
+  end
+
+  if bird['images'] == nil
+    bird['images'] = getImageURLs(birdName, api_key)
+  end
+
 end
 
 File.open('wikiBird.json', 'w') { |file|
