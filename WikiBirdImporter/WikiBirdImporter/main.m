@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Grant Amos. All rights reserved.
 //
 
+#include "Bird.h"
+#include "State.h"
+#include "BirdGroup.h"
+
 static NSManagedObjectModel *managedObjectModel()
 {
     static NSManagedObjectModel *model = nil;
@@ -50,9 +54,128 @@ static NSManagedObjectContext *managedObjectContext()
     return context;
 }
 
+static NSDictionary *openJSON(NSString *filename)
+{
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:[filename stringByDeletingPathExtension] ofType:[filename pathExtension]];
+    
+    NSData* data = [NSData dataWithContentsOfFile:filePath];
+    
+    if (data == nil)
+    {
+        NSLog(@"Failed to open file from NSBundle's mainBundle.");
+        return nil;
+    }
+    
+    NSError* error = nil;
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                options:kNilOptions error:&error];
+    
+    if (error != nil)
+    {
+        NSLog(@"Failed to open JSON data. %@", error.description);
+        return nil;
+    }
+    
+    return json;
+}
+
+static NSManagedObject *getObject(NSString *entityName, NSPredicate *predicate)
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:managedObjectContext()];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchLimit:1];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *fetchResults = [managedObjectContext()
+                             executeFetchRequest:fetchRequest
+                             error:&error];
+    
+    if (error)
+    {
+        NSLog(@"Failed to fetch %@: %@", entityName, [error description]);
+        return nil;
+    }
+    
+    NSManagedObject *obj = nil;
+    
+    if ([fetchResults count] == 0)
+    {
+        obj = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:managedObjectContext()];
+    }
+    else
+    {
+        obj = [fetchResults firstObject];
+    }
+    
+    return obj;
+}
+
+static void insertBirds(NSDictionary *birds)
+{
+    for (NSString *birdName in birds)
+    {
+        NSDictionary *birdDict = [birds objectForKey:birdName];
+        Bird *bird = [NSEntityDescription insertNewObjectForEntityForName:@"Bird" inManagedObjectContext:managedObjectContext()];
+        
+        if ([birdDict objectForKey:@"commonName"])
+            bird.commonName = [birdDict objectForKey:@"commonName"];
+        if ([birdDict objectForKey:@"scientificName"])
+            bird.scientificName = [birdDict objectForKey:@"scientificName"];
+        if ([birdDict objectForKey:@"url"])
+            bird.wikiURL = [birdDict objectForKey:@"url"];
+        if ([birdDict objectForKey:@"intro"] && ![[birdDict objectForKey:@"intro"] isKindOfClass:[NSNull class]])
+            bird.summary = [birdDict objectForKey:@"intro"];
+        
+        for (NSString *stateName in [birdDict objectForKey:@"states"])
+        {
+            State *state = (State*)getObject(@"State", [NSPredicate predicateWithFormat:@"name == %@", stateName]);
+            state.name = stateName;
+            
+            [bird addStatesObject:state];
+        }
+    }
+}
+
+static void insertBirdGroups(NSDictionary *birdGroups)
+{
+    for (NSString *birdGroupName in birdGroups)
+    {
+        NSDictionary *birdGroupDict = [birdGroups objectForKey:birdGroupName];
+        BirdGroup *birdGroup = [NSEntityDescription insertNewObjectForEntityForName:@"BirdGroup" inManagedObjectContext:managedObjectContext()];
+        
+        if ([birdGroupDict objectForKey:@"name"])
+            birdGroup.name = [birdGroupDict objectForKey:@"name"];
+        if ([birdGroupDict objectForKey:@"description"])
+            birdGroup.summary = [birdGroupDict objectForKey:@"description"];
+        if ([birdGroupDict objectForKey:@"family"])
+            birdGroup.scientificFamily = [birdGroupDict objectForKey:@"family"];
+        if ([birdGroupDict objectForKey:@"order"])
+            birdGroup.scientificOrder = [birdGroupDict objectForKey:@"order"];
+        
+        for (NSString *birdName in [birdGroupDict objectForKey:@"birds"])
+        {
+            Bird *bird = (Bird*)getObject(@"Bird", [NSPredicate predicateWithFormat:@"commonName == %@", birdName]);
+            
+            [birdGroup addBirdsObject:bird];
+        }
+    }
+}
+
 static void importData()
 {
+    NSDictionary *json = openJSON(@"wikiBird.json");
     
+    if (json == nil)
+        return;
+    
+    NSDictionary *birds = [json objectForKey:@"birds"];
+    insertBirds(birds);
+    
+    NSDictionary *birdGroups = [json objectForKey:@"birdGroups"];
+    insertBirdGroups(birdGroups);
 }
 
 int main(int argc, const char * argv[])
