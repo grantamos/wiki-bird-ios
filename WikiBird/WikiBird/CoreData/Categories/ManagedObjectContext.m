@@ -84,6 +84,29 @@
     
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"WikiBird.sqlite"];
     
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"WikiBirdImporter" ofType:@"sqlite"]];
+        NSError* err = nil;
+        
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err]) {
+            NSLog(@"Failed to copy preloaded data.");
+        }
+        
+        preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"WikiBirdImporter" ofType:@"sqlite-shm"]];
+        NSURL *shmStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"WikiBird.sqlite-shm"];
+        
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:shmStoreURL error:&err]) {
+            NSLog(@"Failed to copy preloaded data.");
+        }
+        
+        preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"WikiBirdImporter" ofType:@"sqlite-wal"]];
+        NSURL *walStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"WikiBird.sqlite-wal"];
+        
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:walStoreURL error:&err]) {
+            NSLog(@"Failed to copy preloaded data.");
+        }
+    }
+    
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {

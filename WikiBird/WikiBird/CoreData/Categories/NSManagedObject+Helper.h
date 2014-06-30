@@ -10,7 +10,13 @@
 
 @interface NSManagedObject (Helper)
 
-+ (NSManagedObjectContext*)mainContext;
++ (NSManagedObjectContext*) managedObjectContext;
++ (NSArray *)findAllObjects;
++ (NSArray *)findAllObjectsInContext:(NSManagedObjectContext *)context;
++ (NSManagedObject*)findObjectWithPredicate:(NSPredicate*)predicate inContext:(NSManagedObjectContext*)context;
++ (NSArray*)findObjectsWithPredicate:(NSPredicate*)predicate inContext:(NSManagedObjectContext*)context;
 + (NSManagedObject*)create;
+
+- (void)deleteFromContext;
 
 @end
