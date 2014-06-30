@@ -4,35 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Bird Group Table View Controller-->
-        <scene sceneID="g2n-jp-Oci">
-            <objects>
-                <tableViewController id="WWO-ge-HKA" customClass="BirdGroupTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BAi-Xc-3RS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="NB5-hH-1ts">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NB5-hH-1ts" id="Wc0-Ni-tmO">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="WWO-ge-HKA" id="bCm-f7-kyF"/>
-                            <outlet property="delegate" destination="WWO-ge-HKA" id="PUv-8k-mGK"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Vk7-ae-DDY"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aJQ-th-sgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="599" y="-796"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="oc2-kH-HvD">
             <objects>
@@ -41,12 +12,34 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="WWO-ge-HKA" kind="relationship" relationship="rootViewController" id="ce5-Cu-Is0"/>
+                        <segue destination="zh9-fg-zRM" kind="relationship" relationship="rootViewController" id="sb9-l5-x9n"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHW-xa-ZYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="127" y="-796"/>
+        </scene>
+        <!--Bird Group Table View Controller-->
+        <scene sceneID="B4q-1s-Onw">
+            <objects>
+                <viewController id="zh9-fg-zRM" customClass="BirdGroupTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="wnH-aG-Mhh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="zh9-fg-zRM" id="H1g-sj-v8H"/>
+                            <outlet property="delegate" destination="zh9-fg-zRM" id="ytT-MD-Wve"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="0j0-Yb-UVD"/>
+                    <connections>
+                        <outlet property="tableView" destination="wnH-aG-Mhh" id="aVL-Fc-5w7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gSR-1e-RLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="580" y="-796"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

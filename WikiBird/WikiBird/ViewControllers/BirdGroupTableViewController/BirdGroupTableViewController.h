@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface BirdGroupTableViewController : UITableViewController
+@interface BirdGroupTableViewController : CoreDataTableViewController
 
 @end

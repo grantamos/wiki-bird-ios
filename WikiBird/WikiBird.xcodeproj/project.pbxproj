@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933278FE1960F16B00CD9196 /* WikiBirdImporter.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 933278FB1960F16B00CD9196 /* WikiBirdImporter.sqlite */; };
+		933278FF1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 933278FC1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm */; };
+		933279001960F16B00CD9196 /* WikiBirdImporter.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */; };
+		933279051960F31900CD9196 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279041960F31900CD9196 /* CoreDataTableViewController.m */; };
 		93519072195CD035007B94DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519071195CD035007B94DB /* Foundation.framework */; };
 		93519074195CD035007B94DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519073195CD035007B94DB /* CoreGraphics.framework */; };
 		93519076195CD035007B94DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519075195CD035007B94DB /* UIKit.framework */; };
@@ -46,6 +50,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		933278FB1960F16B00CD9196 /* WikiBirdImporter.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = WikiBirdImporter.sqlite; sourceTree = "<group>"; };
+		933278FC1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WikiBirdImporter.sqlite-shm"; sourceTree = "<group>"; };
+		933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WikiBirdImporter.sqlite-wal"; sourceTree = "<group>"; };
+		933279031960F31900CD9196 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		933279041960F31900CD9196 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		9351906E195CD035007B94DB /* WikiBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93519071195CD035007B94DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93519073195CD035007B94DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -112,6 +121,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933278FA1960F16B00CD9196 /* PreloadedData */ = {
+			isa = PBXGroup;
+			children = (
+				933278FB1960F16B00CD9196 /* WikiBirdImporter.sqlite */,
+				933278FC1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm */,
+				933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */,
+			);
+			path = PreloadedData;
+			sourceTree = "<group>";
+		};
+		933279021960F2D300CD9196 /* CoreDataViewController */ = {
+			isa = PBXGroup;
+			children = (
+				933279031960F31900CD9196 /* CoreDataTableViewController.h */,
+				933279041960F31900CD9196 /* CoreDataTableViewController.m */,
+			);
+			path = CoreDataViewController;
+			sourceTree = "<group>";
+		};
 		93519065195CD035007B94DB = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +221,7 @@
 				935190D4195DC7D4007B94DB /* WikiBird.xcdatamodeld */,
 				935190D6195DC7D4007B94DB /* Categories */,
 				935190DF195DC7D4007B94DB /* Models */,
+				933278FA1960F16B00CD9196 /* PreloadedData */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -240,6 +269,7 @@
 		935190F7195DC7EB007B94DB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				933279021960F2D300CD9196 /* CoreDataViewController */,
 				935190F8195DC7EB007B94DB /* BirdGroupTableViewController */,
 			);
 			path = ViewControllers;
@@ -331,9 +361,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				93519088195CD035007B94DB /* Main_iPad.storyboard in Resources */,
+				933278FF1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm in Resources */,
 				9351908D195CD035007B94DB /* Images.xcassets in Resources */,
+				933279001960F16B00CD9196 /* WikiBirdImporter.sqlite-wal in Resources */,
 				93519085195CD035007B94DB /* Main_iPhone.storyboard in Resources */,
 				935190F5195DC7E2007B94DB /* api_key.txt in Resources */,
+				933278FE1960F16B00CD9196 /* WikiBirdImporter.sqlite in Resources */,
 				9351907C195CD035007B94DB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +388,7 @@
 			files = (
 				935190EF195DC7D4007B94DB /* BirdImage.m in Sources */,
 				935190EB195DC7D4007B94DB /* ManagedObjectContext.m in Sources */,
+				933279051960F31900CD9196 /* CoreDataTableViewController.m in Sources */,
 				935190E9195DC7D4007B94DB /* Bird+Helper.m in Sources */,
 				935190F6195DC7E2007B94DB /* FlickrAPI.m in Sources */,
 				935190F0195DC7D4007B94DB /* State.m in Sources */,
