@@ -46,6 +46,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BirdTableViewController *birdVC = [BirdTableViewController new];
+    BirdGroup *birdGroup = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+    birdVC.birdGroup = birdGroup;
     
     [self.navigationController pushViewController:birdVC animated:YES];
 }

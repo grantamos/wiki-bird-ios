@@ -22,10 +22,22 @@
     [self performFetch];
 }
 
+- (void)setBirdGroup:(BirdGroup *)birdGroup
+{
+    _birdGroup = birdGroup;
+    [self setFetchedResultsController:nil];
+    [self performFetch];
+}
+
 - (NSFetchRequest *)fetchRequest
 {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Bird"];
     fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"commonName" ascending:YES]];
+    
+    if (self.birdGroup != nil)
+    {
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"birdGroup == %@", self.birdGroup];
+    }
     
     return fetchRequest;
 }

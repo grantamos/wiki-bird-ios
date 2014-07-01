@@ -7,7 +7,10 @@
 //
 
 #import "CoreDataTableViewController.h"
+#import "BirdGroup.h"
 
 @interface BirdTableViewController : CoreDataTableViewController
+
+@property (strong, nonatomic) BirdGroup *birdGroup;
 
 @end
