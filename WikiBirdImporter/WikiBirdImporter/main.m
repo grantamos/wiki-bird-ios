@@ -9,6 +9,8 @@
 #include "Bird.h"
 #include "State.h"
 #include "BirdGroup.h"
+#include "BirdImage.h"
+#include "NSManagedObject+Helper.h"
 
 static NSManagedObjectModel *managedObjectModel()
 {
@@ -115,8 +117,11 @@ static NSManagedObject *getObject(NSString *entityName, NSPredicate *predicate)
 
 static void insertBirds(NSDictionary *birds)
 {
+    int i = 0;
+    
     for (NSString *birdName in birds)
     {
+        NSLog(@"Bird %d/%ld", i++, [birds count]);
         NSDictionary *birdDict = [birds objectForKey:birdName];
         Bird *bird = [NSEntityDescription insertNewObjectForEntityForName:@"Bird" inManagedObjectContext:managedObjectContext()];
         
@@ -135,6 +140,35 @@ static void insertBirds(NSDictionary *birds)
             state.name = stateName;
             
             [bird addStatesObject:state];
+        }
+        
+        BOOL first = YES;
+        
+        for (NSString *imageURL in [birdDict objectForKey:@"images"])
+        {
+            BirdImage *birdImage = (BirdImage*)[BirdImage create];
+            birdImage.url = imageURL;
+            
+            if (first)
+            {
+                NSLog(@"Fetching bird image %@", imageURL);
+                NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]];
+                NSURLResponse *response = nil;
+                NSError *error = nil;
+                NSData *data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                                      returningResponse:&response
+                                                                  error:&error];
+                
+                if (error != nil)
+                {
+                    NSLog(@"Failed to fetch image %@: %@", imageURL, error);
+                }
+                else
+                {
+                    first = NO;
+                    birdImage.image = data;
+                }
+            }
         }
     }
 }
