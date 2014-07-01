@@ -10,7 +10,6 @@
 #include "State.h"
 #include "BirdGroup.h"
 #include "BirdImage.h"
-#include "NSManagedObject+Helper.h"
 
 static NSManagedObjectModel *managedObjectModel()
 {
@@ -47,7 +46,8 @@ static NSManagedObjectContext *managedObjectContext()
         NSURL *url = [NSURL fileURLWithPath:[path stringByAppendingPathExtension:@"sqlite"]];
         
         NSError *error;
-        NSPersistentStore *newStore = [coordinator addPersistentStoreWithType:STORE_TYPE configuration:nil URL:url options:nil error:&error];
+        NSDictionary *options = @{ NSSQLitePragmasOption : @{@"journal_mode" : @"DELETE"} };
+        NSPersistentStore *newStore = [coordinator addPersistentStoreWithType:STORE_TYPE configuration:nil URL:url options:options error:&error];
         
         if (newStore == nil) {
             NSLog(@"Store Configuration Failure %@", ([error localizedDescription] != nil) ? [error localizedDescription] : @"Unknown Error");
@@ -146,8 +146,9 @@ static void insertBirds(NSDictionary *birds)
         
         for (NSString *imageURL in [birdDict objectForKey:@"images"])
         {
-            BirdImage *birdImage = (BirdImage*)[BirdImage create];
+            BirdImage *birdImage = (BirdImage*)[NSEntityDescription insertNewObjectForEntityForName:@"BirdImage" inManagedObjectContext:managedObjectContext()];
             birdImage.url = imageURL;
+            birdImage.bird = bird;
             
             if (first)
             {
