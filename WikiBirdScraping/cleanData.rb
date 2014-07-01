@@ -72,21 +72,39 @@ else
 
 end
 
+birds.delete_if do |birdName, bird|
+  if bird['scientificName'] == nil
+    print "Deleting " + birdName + "\n"
+    true
+  end
+end
+
 birdGroups.each do |birdGroupName, birdGroup|
   birdGroup['birds'] = birdGroup['birds'].uniq
+  
+  birdGroup['birds'].delete_if do |birdName|
+    if birds[birdName] == nil
+      true
+    end
+  end
 
   birdGroup['birds'].each do |birdName|
     bird = birds[birdName]
 
+    if bird == nil
+      next
+    end
+
     if bird['scientificName'] == nil
-      birdGroups.delete(birdGroupName)
+      birds.delete(birdName)
+      next
     end
 
     if bird['group']
       if bird['group'] == birdGroupName
         next
       end
-      print birdName + " has already been assigned a group: " + bird['group'] + " -> " + birdGroupName + "\n"
+      #print birdName + " has already been assigned a group: " + bird['group'] + " -> " + birdGroupName + "\n"
     end
 
     bird['group'] = birdGroupName
