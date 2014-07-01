@@ -39,6 +39,8 @@
     Bird *bird = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = bird.commonName;
+    
+    //cell.imageView setImage:[UIImage imageWithData:];
 }
 
 @end

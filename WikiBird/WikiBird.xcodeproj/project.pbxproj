@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		933278FE1960F16B00CD9196 /* WikiBirdImporter.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 933278FB1960F16B00CD9196 /* WikiBirdImporter.sqlite */; };
-		933278FF1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 933278FC1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm */; };
-		933279001960F16B00CD9196 /* WikiBirdImporter.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */; };
 		933279051960F31900CD9196 /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279041960F31900CD9196 /* CoreDataTableViewController.m */; };
 		933279091961C9DB00CD9196 /* BirdTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279081961C9DB00CD9196 /* BirdTableViewController.m */; };
 		9332790B1961D07A00CD9196 /* BirdGroupTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9332790A1961D07A00CD9196 /* BirdGroupTableViewController.xib */; };
 		9332790E1961D33700CD9196 /* BirdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332790D1961D33700CD9196 /* BirdImage.m */; };
 		933279151961D42400CD9196 /* BirdTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933279141961D42400CD9196 /* BirdTableViewController.xib */; };
+		9332794C1962383700CD9196 /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332794B1962383700CD9196 /* Bird.m */; };
 		93519072195CD035007B94DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519071195CD035007B94DB /* Foundation.framework */; };
 		93519074195CD035007B94DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519073195CD035007B94DB /* CoreGraphics.framework */; };
 		93519076195CD035007B94DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519075195CD035007B94DB /* UIKit.framework */; };
@@ -32,7 +31,6 @@
 		935190EA195DC7D4007B94DB /* BirdImage+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190DA195DC7D4007B94DB /* BirdImage+Helper.m */; };
 		935190EB195DC7D4007B94DB /* ManagedObjectContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190DC195DC7D4007B94DB /* ManagedObjectContext.m */; };
 		935190EC195DC7D4007B94DB /* NSManagedObject+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190DE195DC7D4007B94DB /* NSManagedObject+Helper.m */; };
-		935190ED195DC7D4007B94DB /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E1195DC7D4007B94DB /* Bird.m */; };
 		935190EE195DC7D4007B94DB /* BirdGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E3195DC7D4007B94DB /* BirdGroup.m */; };
 		935190F0195DC7D4007B94DB /* State.m in Sources */ = {isa = PBXBuildFile; fileRef = 935190E7195DC7D4007B94DB /* State.m */; };
 		935190F5195DC7E2007B94DB /* api_key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 935190F2195DC7E2007B94DB /* api_key.txt */; };
@@ -52,8 +50,6 @@
 
 /* Begin PBXFileReference section */
 		933278FB1960F16B00CD9196 /* WikiBirdImporter.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = WikiBirdImporter.sqlite; sourceTree = "<group>"; };
-		933278FC1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WikiBirdImporter.sqlite-shm"; sourceTree = "<group>"; };
-		933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WikiBirdImporter.sqlite-wal"; sourceTree = "<group>"; };
 		933279031960F31900CD9196 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		933279041960F31900CD9196 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		933279071961C9DB00CD9196 /* BirdTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdTableViewController.h; sourceTree = "<group>"; };
@@ -62,6 +58,8 @@
 		9332790C1961D33700CD9196 /* BirdImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdImage.h; sourceTree = "<group>"; };
 		9332790D1961D33700CD9196 /* BirdImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdImage.m; sourceTree = "<group>"; };
 		933279141961D42400CD9196 /* BirdTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirdTableViewController.xib; sourceTree = "<group>"; };
+		9332794A1962383700CD9196 /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
+		9332794B1962383700CD9196 /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
 		9351906E195CD035007B94DB /* WikiBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93519071195CD035007B94DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93519073195CD035007B94DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,8 +85,6 @@
 		935190DC195DC7D4007B94DB /* ManagedObjectContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedObjectContext.m; sourceTree = "<group>"; };
 		935190DD195DC7D4007B94DB /* NSManagedObject+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+Helper.h"; sourceTree = "<group>"; };
 		935190DE195DC7D4007B94DB /* NSManagedObject+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+Helper.m"; sourceTree = "<group>"; };
-		935190E0195DC7D4007B94DB /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
-		935190E1195DC7D4007B94DB /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
 		935190E2195DC7D4007B94DB /* BirdGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdGroup.h; sourceTree = "<group>"; };
 		935190E3195DC7D4007B94DB /* BirdGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdGroup.m; sourceTree = "<group>"; };
 		935190E6195DC7D4007B94DB /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
@@ -128,8 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				933278FB1960F16B00CD9196 /* WikiBirdImporter.sqlite */,
-				933278FC1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm */,
-				933278FD1960F16B00CD9196 /* WikiBirdImporter.sqlite-wal */,
 			);
 			path = PreloadedData;
 			sourceTree = "<group>";
@@ -255,10 +249,10 @@
 		935190DF195DC7D4007B94DB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9332794A1962383700CD9196 /* Bird.h */,
+				9332794B1962383700CD9196 /* Bird.m */,
 				9332790C1961D33700CD9196 /* BirdImage.h */,
 				9332790D1961D33700CD9196 /* BirdImage.m */,
-				935190E0195DC7D4007B94DB /* Bird.h */,
-				935190E1195DC7D4007B94DB /* Bird.m */,
 				935190E2195DC7D4007B94DB /* BirdGroup.h */,
 				935190E3195DC7D4007B94DB /* BirdGroup.m */,
 				935190E6195DC7D4007B94DB /* State.h */,
@@ -373,10 +367,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933278FF1960F16B00CD9196 /* WikiBirdImporter.sqlite-shm in Resources */,
 				9332790B1961D07A00CD9196 /* BirdGroupTableViewController.xib in Resources */,
 				9351908D195CD035007B94DB /* Images.xcassets in Resources */,
-				933279001960F16B00CD9196 /* WikiBirdImporter.sqlite-wal in Resources */,
 				933279151961D42400CD9196 /* BirdTableViewController.xib in Resources */,
 				935190F5195DC7E2007B94DB /* api_key.txt in Resources */,
 				933278FE1960F16B00CD9196 /* WikiBirdImporter.sqlite in Resources */,
@@ -404,8 +396,8 @@
 				933279051960F31900CD9196 /* CoreDataTableViewController.m in Sources */,
 				935190E9195DC7D4007B94DB /* Bird+Helper.m in Sources */,
 				935190F6195DC7E2007B94DB /* FlickrAPI.m in Sources */,
+				9332794C1962383700CD9196 /* Bird.m in Sources */,
 				935190F0195DC7D4007B94DB /* State.m in Sources */,
-				935190ED195DC7D4007B94DB /* Bird.m in Sources */,
 				935190FB195DC7EB007B94DB /* BirdGroupTableViewController.m in Sources */,
 				93519082195CD035007B94DB /* AppDelegate.m in Sources */,
 				935190E8195DC7D4007B94DB /* WikiBird.xcdatamodeld in Sources */,

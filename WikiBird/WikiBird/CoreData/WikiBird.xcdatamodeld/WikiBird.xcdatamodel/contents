@@ -6,7 +6,7 @@
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wikiURL" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="birdGroup" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BirdGroup" inverseName="birds" inverseEntity="BirdGroup" syncable="YES"/>
-        <relationship name="images" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BirdImage" inverseName="bird" inverseEntity="BirdImage" syncable="YES"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BirdImage" inverseName="bird" inverseEntity="BirdImage" syncable="YES"/>
         <relationship name="states" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="State" inverseName="birds" inverseEntity="State" syncable="YES"/>
     </entity>
     <entity name="BirdGroup" representedClassName="BirdGroup" syncable="YES">

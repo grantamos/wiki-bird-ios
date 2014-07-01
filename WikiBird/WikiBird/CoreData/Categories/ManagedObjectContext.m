@@ -91,20 +91,6 @@
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err]) {
             NSLog(@"Failed to copy preloaded data.");
         }
-        
-        preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"WikiBirdImporter" ofType:@"sqlite-shm"]];
-        NSURL *shmStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"WikiBird.sqlite-shm"];
-        
-        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:shmStoreURL error:&err]) {
-            NSLog(@"Failed to copy preloaded data.");
-        }
-        
-        preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"WikiBirdImporter" ofType:@"sqlite-wal"]];
-        NSURL *walStoreURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"WikiBird.sqlite-wal"];
-        
-        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:walStoreURL error:&err]) {
-            NSLog(@"Failed to copy preloaded data.");
-        }
     }
     
     NSError *error = nil;
