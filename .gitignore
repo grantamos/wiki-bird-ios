@@ -25,3 +25,4 @@ DerivedData/
 xcuserdata
 
 api_key.txt
+*.sqlite
