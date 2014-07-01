@@ -8,6 +8,8 @@
 
 #import "BirdTableViewController.h"
 #import "Bird.h"
+#import "BirdImage.h"
+#import "BirdTableViewCell.h"
 
 #define CELL_IDENTIFIER @"BirdCell"
 
@@ -15,7 +17,8 @@
 
 - (void)viewDidLoad
 {
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CELL_IDENTIFIER];
+    UINib *nib = [UINib nibWithNibName:@"BirdTableViewCell" bundle:[NSBundle mainBundle]];
+    [self.tableView registerNib:nib forCellReuseIdentifier:CELL_IDENTIFIER];
     [self performFetch];
 }
 
@@ -34,13 +37,27 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView willDisplayCell:(BirdTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Bird *bird = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = bird.commonName;
+    cell.commonNameLabel.text = bird.commonName;
     
-    //cell.imageView setImage:[UIImage imageWithData:];
+    NSSet *goodImages = [bird.images filteredSetUsingPredicate:[NSPredicate predicateWithFormat:@"image != nil"]];
+    
+    if ([goodImages count] == 0)
+        return;
+    
+    NSData *imageData = ((BirdImage*)[goodImages anyObject]).image;
+    
+    [cell.backgroundImageView setImage:[UIImage imageWithData:imageData]];
+    NSLog(@"%@", NSStringFromCGRect(cell.backgroundImageView.frame));
+    NSLog(@"%@", NSStringFromCGRect(cell.bounds));
+}
+
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.view.bounds.size.width / 2;
 }
 
 @end

@@ -14,6 +14,8 @@
 		9332790E1961D33700CD9196 /* BirdImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332790D1961D33700CD9196 /* BirdImage.m */; };
 		933279151961D42400CD9196 /* BirdTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933279141961D42400CD9196 /* BirdTableViewController.xib */; };
 		9332794C1962383700CD9196 /* Bird.m in Sources */ = {isa = PBXBuildFile; fileRef = 9332794B1962383700CD9196 /* Bird.m */; };
+		933279631962411500CD9196 /* BirdTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 933279611962411500CD9196 /* BirdTableViewCell.m */; };
+		933279641962411500CD9196 /* BirdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 933279621962411500CD9196 /* BirdTableViewCell.xib */; };
 		93519072195CD035007B94DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519071195CD035007B94DB /* Foundation.framework */; };
 		93519074195CD035007B94DB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519073195CD035007B94DB /* CoreGraphics.framework */; };
 		93519076195CD035007B94DB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93519075195CD035007B94DB /* UIKit.framework */; };
@@ -60,6 +62,9 @@
 		933279141961D42400CD9196 /* BirdTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirdTableViewController.xib; sourceTree = "<group>"; };
 		9332794A1962383700CD9196 /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
 		9332794B1962383700CD9196 /* Bird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bird.m; sourceTree = "<group>"; };
+		933279601962411500CD9196 /* BirdTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BirdTableViewCell.h; sourceTree = "<group>"; };
+		933279611962411500CD9196 /* BirdTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BirdTableViewCell.m; sourceTree = "<group>"; };
+		933279621962411500CD9196 /* BirdTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirdTableViewCell.xib; sourceTree = "<group>"; };
 		9351906E195CD035007B94DB /* WikiBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93519071195CD035007B94DB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93519073195CD035007B94DB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +150,16 @@
 				933279141961D42400CD9196 /* BirdTableViewController.xib */,
 			);
 			path = BirdTableViewController;
+			sourceTree = "<group>";
+		};
+		9332795F196240FB00CD9196 /* BirdTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				933279601962411500CD9196 /* BirdTableViewCell.h */,
+				933279611962411500CD9196 /* BirdTableViewCell.m */,
+				933279621962411500CD9196 /* BirdTableViewCell.xib */,
+			);
+			path = BirdTableViewCell;
 			sourceTree = "<group>";
 		};
 		93519065195CD035007B94DB = {
@@ -275,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				935190F8195DC7EB007B94DB /* BirdGroupTableViewController */,
+				9332795F196240FB00CD9196 /* BirdTableViewCell */,
 				933279061961C9C300CD9196 /* BirdTableViewController */,
 				933279021960F2D300CD9196 /* CoreDataViewController */,
 			);
@@ -367,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933279641962411500CD9196 /* BirdTableViewCell.xib in Resources */,
 				9332790B1961D07A00CD9196 /* BirdGroupTableViewController.xib in Resources */,
 				9351908D195CD035007B94DB /* Images.xcassets in Resources */,
 				933279151961D42400CD9196 /* BirdTableViewController.xib in Resources */,
@@ -393,6 +410,7 @@
 			files = (
 				9332790E1961D33700CD9196 /* BirdImage.m in Sources */,
 				935190EB195DC7D4007B94DB /* ManagedObjectContext.m in Sources */,
+				933279631962411500CD9196 /* BirdTableViewCell.m in Sources */,
 				933279051960F31900CD9196 /* CoreDataTableViewController.m in Sources */,
 				935190E9195DC7D4007B94DB /* Bird+Helper.m in Sources */,
 				935190F6195DC7E2007B94DB /* FlickrAPI.m in Sources */,
