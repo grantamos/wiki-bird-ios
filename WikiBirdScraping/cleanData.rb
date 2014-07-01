@@ -100,14 +100,41 @@ birdGroups.each do |birdGroupName, birdGroup|
       next
     end
 
-    if bird['group']
-      if bird['group'] == birdGroupName
-        next
-      end
-      #print birdName + " has already been assigned a group: " + bird['group'] + " -> " + birdGroupName + "\n"
+    bird.delete('groups')
+  end
+end
+
+mergeKeys.each do |oldKey, newKey|
+
+  if oldKey == newKey
+    next
+  end
+
+  oldGroup = birdGroups[oldKey]
+  newGroup = birdGroups[newKey]
+
+  oldGroup = oldGroup.merge(newGroup){ |key, oldval, newval|
+    if key == "birds"
+      newval = newval.push(oldval).flatten.uniq
     end
 
-    bird['group'] = birdGroupName
+    newval
+  }
+
+  birdGroups[newKey] = oldGroup
+  birdGroups.delete(oldKey)
+
+  oldGroup['birds'].each do |birdName|
+    bird = birds[birdName]
+
+    if bird['group']
+      if bird['group'] == newKey
+        next
+      end
+      print birdName + " has already been assigned a group: " + bird['group'] + " -> " + newKey + "\n"
+    end
+
+    bird['group'] = newKey
     bird.delete('groups')
   end
 end

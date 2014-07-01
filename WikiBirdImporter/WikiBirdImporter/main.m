@@ -81,6 +81,26 @@ static NSDictionary *openJSON(NSString *filename)
     return json;
 }
 
+//Helper method to delete all objects from a specific table/entity
+static void deleteAllObjects(NSString *entityDescription)
+{
+    NSManagedObjectContext *context = managedObjectContext();
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    fetchRequest.includesPropertyValues = NO;
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityDescription inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    
+    NSError *error;
+    NSArray *items = [context executeFetchRequest:fetchRequest error:&error];
+    
+    for (NSManagedObject *managedObject in items)
+    {
+        [context deleteObject:managedObject];
+    }
+}
+
 static NSManagedObject *getObject(NSString *entityName, NSPredicate *predicate)
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -118,6 +138,7 @@ static NSManagedObject *getObject(NSString *entityName, NSPredicate *predicate)
 static void insertBirds(NSDictionary *birds)
 {
     int i = 0;
+    deleteAllObjects(@"Bird");
     
     for (NSString *birdName in birds)
     {
@@ -146,12 +167,25 @@ static void insertBirds(NSDictionary *birds)
         
         for (NSString *imageURL in [birdDict objectForKey:@"images"])
         {
-            BirdImage *birdImage = (BirdImage*)[NSEntityDescription insertNewObjectForEntityForName:@"BirdImage" inManagedObjectContext:managedObjectContext()];
-            birdImage.url = imageURL;
+            BirdImage *birdImage = (BirdImage*)getObject(@"BirdImage", [NSPredicate predicateWithFormat:@"url == %@", imageURL]);
+            
+            if (birdImage == nil)
+            {
+                birdImage = (BirdImage*)[NSEntityDescription insertNewObjectForEntityForName:@"BirdImage" inManagedObjectContext:managedObjectContext()];
+            
+                birdImage.url = imageURL;
+            }
+            
             birdImage.bird = bird;
             
             if (first)
             {
+                if (birdImage.image != nil)
+                {
+                    first = NO;
+                    continue;
+                }
+                
                 NSLog(@"Fetching bird image %@", imageURL);
                 NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:imageURL]];
                 NSURLResponse *response = nil;
@@ -176,6 +210,8 @@ static void insertBirds(NSDictionary *birds)
 
 static void insertBirdGroups(NSDictionary *birdGroups)
 {
+    deleteAllObjects(@"BirdGroup");
+    
     for (NSString *birdGroupName in birdGroups)
     {
         NSDictionary *birdGroupDict = [birdGroups objectForKey:birdGroupName];
@@ -215,7 +251,6 @@ static void importData()
 
 int main(int argc, const char * argv[])
 {
-
     @autoreleasepool {
         // Create the managed object context
         NSManagedObjectContext *context = managedObjectContext();
